@@ -263,3 +263,11 @@ ijkplayer is licensed under LGPLv2.1 or later, so itself is free for commercial 
 But ijkplayer is also based on other different projects under various licenses, which I have no idea whether they are compatible to each other or to your product.
 
 [IANAL](https://en.wikipedia.org/wiki/IANAL), you should always ask your lawyer for these stuffs before use it in your product.
+
+
+
+### Build Q&A
+* [参考1](http://www.liaoxuefeng.com/article/0013738927837699a7f3407ea5f4b5caf8e1ab47997d7c5000)
+* [官方 OSX 编译](http://ffmpeg.org/trac/ffmpeg/wiki/MacOSXCompilationGuide)
+* Q: yasm/nasm not found or too old. Use --disable-yasm for a crippled build.
+  A: install yasm. MAC: brew install yasm
