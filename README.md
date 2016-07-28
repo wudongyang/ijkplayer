@@ -270,4 +270,37 @@ But ijkplayer is also based on other different projects under various licenses, 
 * [参考1](http://www.liaoxuefeng.com/article/0013738927837699a7f3407ea5f4b5caf8e1ab47997d7c5000)
 * [官方 OSX 编译](http://ffmpeg.org/trac/ffmpeg/wiki/MacOSXCompilationGuide)
 * Q: yasm/nasm not found or too old. Use --disable-yasm for a crippled build.
+
   A: install yasm. MAC: brew install yasm
+
+* Q: ijkplayer-sample 总是提示需要 android-support-v7-appcompat 
+  
+  A: 
+  
+  	1. 工程中导入自己的 android-support-v7-appcompat
+  	2. 如果依然有叹号，并且在关闭项目再打开时提示 .project 缺少 android-support-v7-appcompat 的话，那就要在 java build path - project 中删除原先的 android-support-v7-appcompat
+  	3. 
+
+* Q: 提示 ArrayList 需要添加类型
+
+  A: 设置 JRE 1.7
+
+* Q: 提示 android-support-v7-preference 找不到
+
+	A: 先把 /Users/wdy/dev/android-sdk-macosx/extras/android/support/v7/preference 引入到 Eclipse，但总是编译失败。后在 github 上找https://github.com/dandar3/android-support-v7-preference 找到一个 Eclipse 的工程，尝试编译。注意调整了 JAVA Build Path - Projects，Add “v7-appcompat” 和
+“V7-recycleview” 以及在 libs 添加了 “android-support-v4.jar”。
+
+所需的lib都是通过 SDK/extras/android/support/ 中导入Eclipse的工程，v4.jar 是直接从 SDK 下拷贝的。
+
+* Q: ijkplayer-sample 编译是总提示 java.lang.NullPointerException
+
+  A: 由于Eclipse中使用SVN插件所致。svn在checkout的所有文件的文件夹下都会生成一个.svn文件用于管理版本库，而新版的adt加强了对项目文件中的异常类型文件的识别，所以在遇到.svn时报了空指针的错误。
+
+  用方法二并将API设置成了24（因为 preference-master 对应的是24）
+  解决方法一：删除掉工程中所有的.svn目录，重新编译  
+  解决方法二：
+  	
+  	1. Open properties of project in Eclipse then Resources -> Resource filters.
+	2. Click the "Add..." button -> Check "Exclude all", "Files and folders", "All children". 
+	3. In the text entry box input ".svn" (without quotes).
+	4. Restart Eclipse.
