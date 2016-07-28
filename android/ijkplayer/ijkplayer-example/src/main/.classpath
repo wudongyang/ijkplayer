@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/android-support-v7-appcompat"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ijkplayer-arm64"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ijkplayer-armv5"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ijkplayer-armv7a"/>
@@ -12,5 +11,6 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ijkplayer-x86"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/android-support-v7-appcompat"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
