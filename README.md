@@ -290,7 +290,22 @@ But ijkplayer is also based on other different projects under various licenses, 
 	A: 先把 /Users/wdy/dev/android-sdk-macosx/extras/android/support/v7/preference 引入到 Eclipse，但总是编译失败。后在 github 上找https://github.com/dandar3/android-support-v7-preference 找到一个 Eclipse 的工程，尝试编译。注意调整了 JAVA Build Path - Projects，Add “v7-appcompat” 和
 “V7-recycleview” 以及在 libs 添加了 “android-support-v4.jar”。
 
-所需的lib都是通过 SDK/extras/android/support/ 中导入Eclipse的工程，v4.jar 是直接从 SDK 下拷贝的。
+	所需的lib都是通过 SDK/extras/android/support/ 中导入Eclipse的工程，v4.jar 是直接从 SDK 下拷贝的。
+	
+	还有一个方案是把 aar 变成 Eclipse 的工程。[参考](https://commonsware.com/blog/2014/07/03/consuming-aars-eclipse.html)
+	
+	1. UnZIP the AAR into some directory.
+	
+	2. Create an empty directory that will be the home for the Android library project. For the rest of these steps, I will refer to this as “the output directory”.
+	
+	3. Copy the AndroidManifest.xml, res/, and assets/ directories from the AAR into the output directory.
+	
+	4. Create a libs/ directory in the output directory. Copy into libs/ the classes.jar from the root of the unZIPped AAR, plus anything in libs/ in the AAR (e.g., mediarouter-v7 has its own JAR of proprietary bits).
+	
+	5. Decide what build SDK you want to try to use. You might just choose the highest SDK version you have installed. Or, you can use the android:minSdkVersion and the -vNN resource set qualifiers to get clues as to what a good build SDK might be. If desired, create a project.properties file with a target=android-NNN line, where NNN is your chosen build SDK. Or, you can address this in Eclipse later on.
+	
+	6. Import the resulting project into Eclipse, and if needed adjust the build SDK (Project > Properties > Android). Also, you will need to attach to this library project any library projects it depends upon (e.g., mediarouter-v7 depends upon appcompat-v7).
+		
 
 * Q: ijkplayer-sample 编译是总提示 java.lang.NullPointerException
 
@@ -304,3 +319,7 @@ But ijkplayer is also based on other different projects under various licenses, 
 	2. Click the "Add..." button -> Check "Exclude all", "Files and folders", "All children". 
 	3. In the text entry box input ".svn" (without quotes).
 	4. Restart Eclipse.
+
+* Q: Android SDK Manager 更新失败
+
+  A: 注意看 Manager 里是否使用了代理，使用代理就不用 VPN。用 VPN 一般可以不用使用代理。去掉代理记得去掉下方的： "Force https://...... usering http://... "
