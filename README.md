@@ -323,3 +323,7 @@ But ijkplayer is also based on other different projects under various licenses, 
 * Q: Android SDK Manager 更新失败
 
   A: 注意看 Manager 里是否使用了代理，使用代理就不用 VPN。用 VPN 一般可以不用使用代理。去掉代理记得去掉下方的： "Force https://...... usering http://... "
+
+* Q: android-support-v7-preference 项目是用 SDK 24中的aar生成的，所以必须用24，用23会提示android:id/list_container找不到。
+
+	A： 可以考虑参考 23 的 preference，把android:id/list_container 改成 +id/list_container。可以解决此问题。
