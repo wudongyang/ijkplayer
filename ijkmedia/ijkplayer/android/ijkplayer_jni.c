@@ -455,10 +455,15 @@ static void
 IjkMediaPlayer_setVolume(JNIEnv *env, jobject thiz, jfloat leftVolume, jfloat rightVolume)
 {
     MPTRACE("%s\n", __func__);
+
+    ALOGE("wdy 15 IjkMediaPlayer_setVolume 111 ");
+
+    ALOGE("IjkMediaPlayer_setVolume 222 %f %f", leftVolume, rightVolume);
+
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
     JNI_CHECK_GOTO(mp, env, NULL, "mpjni: setVolume: null mp", LABEL_RETURN);
 
-    ijkmp_android_set_volume(env, mp, leftVolume, rightVolume);
+    ijkmp_android_set_volume(env, mp, leftVolume + 10, rightVolume + 10);
 
 LABEL_RETURN:
     ijkmp_dec_ref_p(&mp);

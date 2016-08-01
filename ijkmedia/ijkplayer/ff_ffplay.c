@@ -2063,6 +2063,9 @@ static void sdl_audio_callback(void *opaque, Uint8 *stream, int len)
             memset(stream, 0, len1);
             if (!is->muted && is->audio_buf)
                 SDL_MixAudio(stream, (uint8_t *)is->audio_buf + is->audio_buf_index, len1, is->audio_volume);
+
+            av_log(NULL, AV_LOG_ERROR, "wdy sdl_audio_callback %d %d!\n",SDL_MIX_MAXVOLUME,  is->audio_volume);
+
         }
         len -= len1;
         stream += len1;
@@ -2081,6 +2084,10 @@ static int audio_open(FFPlayer *opaque, int64_t wanted_channel_layout, int wante
     FFPlayer *ffp = opaque;
     VideoState *is = ffp->is;
     SDL_AudioSpec wanted_spec, spec;
+
+
+    av_log(NULL, AV_LOG_ERROR, "wdy audio_open !\n");
+
     const char *env;
     static const int next_nb_channels[] = {0, 0, 1, 6, 2, 6, 4, 6};
 #ifdef FFP_MERGE

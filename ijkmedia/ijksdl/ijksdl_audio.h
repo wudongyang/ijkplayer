@@ -71,7 +71,7 @@ typedef uint16_t SDL_AudioFormat;
 #define AUDIO_F32SYS    AUDIO_F32MSB
 #endif
 
-#define SDL_MIX_MAXVOLUME (128)
+#define SDL_MIX_MAXVOLUME (1280)
 
 typedef void (*SDL_AudioCallback) (void *userdata, Uint8 * stream,
                                    int len);
